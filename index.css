@@ -21,7 +21,7 @@ body {
     flex-direction: row;
     justify-content: center;
     width: 100%;
-    box-shadow: 0px 1px #adadad;
+    box-shadow: 0 1px #adadad;
 }
 
 .inputs {
@@ -61,5 +61,9 @@ div.pre-wrapper {
     height: 80vh;
     overflow: auto;
     background: #ececec;
-    box-shadow: 0px 0px 4px 1px #888888;
+    box-shadow: 0 0 4px 1px #888888;
+}
+
+pre {
+    min-height: 94%;
 }

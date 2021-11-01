@@ -43,7 +43,7 @@ const readFile = (evt, callback) => {
     var file = files[0];           
     var reader = new FileReader();
     reader.onload = function(event) {
-      callback(event.target.result);
+      callback(event.target.result, file.name);
     }
     reader.readAsText(file)
 }
@@ -57,21 +57,33 @@ const setDiffDiv = (outputElement, firstFile, secondFile) => {
 
 const loadPage = () => {
     let firstFile = null, secondFile = null;
+    let firstFileName = null, secondFileName = null;
 
     const firstFileElement = document.getElementById('firstFile');
     const secondFileElement = document.getElementById('secondFile');
     const outputElement = document.getElementById('output');
+    const downloadElement = document.getElementById('download');
+    const downloadLink = document.createElement('a');
     
-    firstFileElement.addEventListener('change', (ev) => readFile(ev, (json) => {
+    firstFileElement.addEventListener('change', (ev) => readFile(ev, (json, fileName) => {
         firstFile = JSON.parse(json);
+        firstFileName = fileName;
         setDiffDiv(outputElement, firstFile, secondFile);
     }), false);
 
-    secondFileElement.addEventListener('change', (ev) => readFile(ev, (json) => {
+    secondFileElement.addEventListener('change', (ev) => readFile(ev, (json, fileName) => {
         secondFile = JSON.parse(json);
+        secondFileName = fileName;
         setDiffDiv(outputElement, firstFile, secondFile);
     }), false);
 
+    downloadElement.addEventListener('click', async() => {
+        const blob = new Blob([outputElement.innerText], { type: 'text/plain' });
+        const fileName = secondFileName;
+        downloadLink.href = window.URL.createObjectURL(blob);
+        downloadLink.download = fileName;
+        downloadLink.click();
+    })
     document.getElementById('copy').addEventListener('click', async () => {
         await navigator.clipboard.writeText(outputElement.innerText);
         alert('copied !');
