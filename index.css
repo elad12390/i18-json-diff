@@ -6,6 +6,11 @@
 body {
     background: #f0f0f0;
 }
+
+header {
+    text-align: center;
+}
+
 .container {
     padding: 1rem;
     display: flex;
@@ -27,20 +32,20 @@ body {
 .inputs {
     display: flex;
     flex-direction: row;
+    gap: 1rem;
     height: 5rem;
-    width: 32%;
+    justify-content: center;
+    align-items: center;
 }
 
 .inputs div {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    justify-content: center;
-    align-items: center;
 }
 
 .inputs div input{
-    width: 60%;
+    width: 100%;
 }
 
 .outputs {
@@ -58,12 +63,92 @@ body {
 
 div.pre-wrapper {
     width: 100%;
-    height: 80vh;
     overflow: auto;
-    background: #ececec;
+    /*background: #ececec;*/
+    max-height: 70vh;
+    flex-grow: 4;
+    flex-shrink: 0;
     box-shadow: 0 0 4px 1px #888888;
 }
 
 pre {
-    min-height: 94%;
+    min-height: 100%;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.output-buttons {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: end;
+    gap: 1rem
+}
+
+button {
+    height: 3rem;
+    width: 11rem;
+    border-radius: 5px;
+    font-weight: 400;
+    border: none #007bff;
+    line-height: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem
+}
+
+button.icon {
+    width: 3rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+button.accent {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+
+button.accent:hover {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+button.primary {
+    color: #fff;
+    background-color: #007bff;
+}
+
+button.primary:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+}
+
+.material-icons {
+    line-height: 2rem !important;
+}
+
+.icon-text {
+    line-height: 2rem;
+}
+
+.editor-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.output-header {
+    height: 1rem;
+    margin: 0;
+    margin-top: -1rem;
+    margin-bottom: -1rem;
+    text-align: center;
+    line-height: 1.5rem;
 }
