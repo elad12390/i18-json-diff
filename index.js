@@ -98,7 +98,7 @@ const loadPage = () => {
     const downloadElement = document.getElementById('download');
     const downloadLink = document.createElement('a');
 
-    // outputWrapper.hidden = true;
+    outputWrapper.hidden = true;
 
     firstFileButton.addEventListener('click', () => {
         firstFileElement.click();
